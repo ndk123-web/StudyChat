@@ -1,0 +1,60 @@
+<!-- filepath: /c:/Users/Navnath/OneDrive/Desktop/Django/base/templates/base/room.html -->
+{% extends 'main.html' %}
+
+{% block content %}
+
+<style>
+    .room-container {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+</style>
+
+<div class="room-container">
+
+    <div>
+        <h1>{{ room.name }}</h1>
+        <p>{{ room.description }}</p>
+
+        <div>
+            <h3>Conversations</h3>
+            <hr>
+
+            <div>
+                {% for conversation in conversations %}
+                <div>
+                    <span>@{{ conversation.user }} {{ conversation.created|timesince }} Ago</span>
+                    <p>{{ conversation.body }}</p>
+                    {% if request.user == conversation.user %}
+                    <a href="{% url 'delete-Message' pk=conversation.id %}"> Delete </a>
+                    <hr>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if user.is_authenticated %}
+        <div class="comment-form">
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="body" placeholder="Write your message here..." />
+                <input type="submit" value="Send" />
+            </form>
+        </div>
+        {% endif %}
+    </div>
+
+    <div>
+        <h3>Participants</h3>
+        <hr>
+        <div>
+        {% for user in participants %}
+            <p>{{user.username}}</p>
+        {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

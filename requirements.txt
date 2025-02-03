@@ -1,0 +1,9 @@
+Django
+dj-database-url
+djangorestframework
+django-cors-headers
+django-filter
+psycopg2-binary
+whitenoise
+numpy
+attrs

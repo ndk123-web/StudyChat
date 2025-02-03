@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://remote_postgres_uo3m_user:I5ZcwHOZ66n7T9ND170KuSfqVnvQnrnN@dpg-cu6i62ggph6c73c70t1g-a.oregon-postgres.render.com/remote_postgres_uo3m
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: remote_postgres_uo3m
+      POSTGRES_USER: remote_postgres_uo3m_user
+      POSTGRES_PASSWORD: I5ZcwHOZ66n7T9ND170KuSfqVnvQnrnN
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

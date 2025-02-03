@@ -1,0 +1,33 @@
+# 1 First we need Latest Python Version Interpreter 
+
+# 2 Then we need to install Virtual enviroment
+  - pip install virtualenv
+  - virtual env myenviroment  
+    - Virtual Environment is an isolated environment for a Python project,
+      which ensures that dependencies (libraries) of one project don’t affect others.
+  - myenviroment\Scripts\activate 
+
+  - Then we need to install packages ( pip install Django )
+  - Using Django-admin we can see what commands are available and what we can use  
+
+# 3 Create the project 
+  - Django-admin startproject Django_name (create django file) 
+  - cd Django_name              (goto the project directory)
+  - python manage.py runserver (runs the server at port 8000)
+
+# 4 Different file
+  wsgi.py     -> web server gateway interface
+  urls.py     -> List of urls path 
+  asgi.py     -> Asynchronous Server Gateway Interface
+  setting.py  -> All Project related Configurations (templates , others )
+
+
+
+Avoid Dependency Conflicts:
+
+Different projects can use different versions of the same library (e.g., Django 4.0 for one project, Django 3.2 for another).
+Keep Development Clean:
+
+Isolated Dependencies: Keeps libraries separate for each project.
+No System Clutter: Clean project management.
+Easy Sharing: Use pip freeze > requirements.txt for sharing dependencies.
