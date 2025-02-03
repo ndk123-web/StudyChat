@@ -7,4 +7,3 @@ psycopg2-binary
 whitenoise
 numpy
 attrs
-whitenoise
