@@ -19,7 +19,6 @@ from django.urls import path,include
 
 # Whenever we write anything in the url it will be passed to the view function
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('',include('base.urls')),
     path('api/',include('base.api.urls'))
 ]
